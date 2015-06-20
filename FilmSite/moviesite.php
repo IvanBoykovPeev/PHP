@@ -1,60 +1,53 @@
-<?php 
+<?php
 session_start();
 
 //check to see if user has logged in with a valid password
 if ($_SESSION['authuser'] != 1) {
 	echo "Sorry,but you don't have permission to view this page, 
 	you loser!";
-	exit();		
+	exit();
 }
- ?>
- 
+?>
+
 <html>
 	<head>
-		<title>My Movie Site - <?php echo ['favmovie']; ?></title>
+		<title>My Movie Site?></title>
 		<body>
-			<?php include 'header.php'; ?>
 			<?php
-		    function listmovie_1()
-			{
-				echo "1. Life of Braian<br>";
-				echo "2. Stripes<br>";
-				echo "3. Office Space<br>";
-				echo "4. The Holly Grail<br>";
-				echo "5. Matrix<br>";
-			}
-			
-			function listmovie_2()
-			{
-				echo "6. Terminator<br>";
-				echo "7. Star Wars<br>";
-				echo "8. Close Encounters of the Third Kind<br>";
-				echo "9. Sixteen Candies<br>";
-				echo "10. Caddyshack<br>";
-			}
+			include 'header.php';
+			?>
+			<?php
+			$favmovies = array("Life of Braian", "Stripes", "Office Space", "The Holly Grail", "Matrix", "Terminator", "Star Wars", "Close Encounters of the Third Kind", "Sixteen Candies", "Caddyshack");
+
 			if (isset($_REQUEST['favmovie'])) {
-			echo "Welcome to our site, ";
-			echo $_SESSION['username'];
-			echo "<br>";
-			echo "My favorite movie is ";
-			echo $_REQUEST['favmovie'];
-			echo "<br>";
-			$movierate = 5;
-			echo "My movie rating for this movie is: ";
-			echo $movierate;
-			} else {
-				echo "My top ";
-				echo $_REQUEST['movienum'];
-				echo " movie are:";
+				echo "Welcome to our site, ";
+				echo $_SESSION['username'];
 				echo "<br>";
-				
-				listmovie_1();
-				if ($_REQUEST['movienum'] == 10) {
-					listmovie_2();
+				echo "My favorite movie is ";
+				echo $_REQUEST['favmovie'];
+				echo "<br>";
+				$movierate = 5;
+				echo "My movie rating for this movie is: ";
+				echo $movierate;
+			} else {
+				echo "My top " . $_POST['num'] . " movies are:<br>";
+
+				if (isset($_REQUEST['sorted'])) {
+					sort($favmovies);
 				}
+
+				//list the movies
+				$numlist = 1;
+				while ($numlist <= $_POST['num']) {
+					echo "$numlist";
+					echo ". ";
+					echo pos($favmovies);
+					next($favmovies);
+					echo "<br>\n";
+					$numlist = $numlist + 1;
+				}
+
 			}
-			 
-			
 			?>
 		</body>
 	</head>
