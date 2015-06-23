@@ -14,8 +14,7 @@ $query = "SELECT movie_name, movie_director, movie_leadactor FROM movie";
 //execute sql querry
 $result = mysqli_query($conn, $query);
 $num_movies = mysqli_num_rows($result);
-
-$movie_header=<<<EOD
+$movie_header = <<<EOD
 <h2><center>Movie Review Database</center></h2>
 <table "width="70%" border="1" cellpadding="2" cellspacing="2" align="center">
  <tr>
@@ -24,26 +23,52 @@ $movie_header=<<<EOD
  	<th>Movie Lead Actor</th>
  </tr>
 EOD;
+
+
+function get_director() {
+	global $movie_director;
+	global $director;
+	$conn = mysqli_connect("localhost", "blade", "wMHsQwaLKH7s79Yu");
+	mysqli_select_db($conn, "moviesite");
+	$querry_d = "SELECT people_fullname FROM people WHERE people_id = '$movie_director'";
+	$results_d = mysqli_query($conn, $querry_d);
+
+	$row_d = mysqli_fetch_assoc($results_d);
+	extract($row_d);
+	$director = $people_fullname;
+}
+
+function get_leadactor() {
+	global $movie_director;
+	global $movie_leadactor;
+	global $leadactor;
+	$conn = mysqli_connect("localhost", "blade", "wMHsQwaLKH7s79Yu");
+	mysqli_select_db($conn, "moviesite");
+	$querry_a = "SELECT people_fullname FROM people WHERE people_id = '$movie_leadactor'";
+	$results_a = mysqli_query($conn, $querry_a);
+	$row_a = mysqli_fetch_assoc($results_a);
+	extract($row_a);
+	$leadactor = $people_fullname;
+}
 $movie_details = '';
 while ($row = mysqli_fetch_array($result)) {
 	$movie_name = $row['movie_name'];
 	$movie_director = $row['movie_director'];
 	$movie_leadactor = $row['movie_leadactor'];
-	
-	$movie_details .=<<<EOD
+	//get director's name from people table
+	get_director();
+	//get lead actor's name from people table
+	get_leadactor();
+	$movie_details .= <<<EOD
 	<tr>
 	<td>$movie_name</td>
-	<td>$movie_director</td>
-	<td>$movie_leadactor</td>
+	<td>$director</td>
+	<td>$leadactor</td>
 	</tr>
 EOD;
 }
 
-
-$movie_details .=<<<EOD
-<tr>
-	<td>&nbsp;</td>
-	</tr>
+$movie_details .= <<<EOD
 	<tr>
 	<td>Total :$num_movies Movies</td>
 	</tr>
@@ -51,7 +76,7 @@ EOD;
 
 $movie_footer = "</table>";
 
-$movie=<<<MOVIE
+$movie = <<<MOVIE
 		$movie_header
 		$movie_details
 		$movie_footer
