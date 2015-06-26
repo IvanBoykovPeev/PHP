@@ -86,4 +86,5 @@ MOVIE;
 
 echo "There are $num_movies movies in our database";
 echo "$movie";
+
 ?>
