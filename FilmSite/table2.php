@@ -24,7 +24,6 @@ $movie_header = <<<EOD
  </tr>
 EOD;
 
-
 function get_director() {
 	global $movie_director;
 	global $director;
@@ -50,6 +49,7 @@ function get_leadactor() {
 	extract($row_a);
 	$leadactor = $people_fullname;
 }
+
 $movie_details = '';
 while ($row = mysqli_fetch_array($result)) {
 	$movie_name = $row['movie_name'];
