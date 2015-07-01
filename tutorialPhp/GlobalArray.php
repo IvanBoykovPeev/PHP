@@ -4,7 +4,6 @@ $y = 10;
 
 /* $GLOBAL[index] stored global variablels
  * [index] holds name of the variables
- *
  * */
 
 function myTest() {
