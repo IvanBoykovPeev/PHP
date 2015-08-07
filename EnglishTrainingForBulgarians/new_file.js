@@ -31,10 +31,10 @@ function check () {
   console.log(a);
   console.log(b);
   if (a == b) {
-  document.getElementById("otgovor").innerText = "Verno";
+  document.getElementById("otgovor").innerText = "Вярно";
   }
   else {
-  	document.getElementById("otgovor").innerText = "Greshno";
+  	document.getElementById("otgovor").innerText = "Грешно";
   }
 }
 

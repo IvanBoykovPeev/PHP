@@ -60,41 +60,39 @@
 			<h1>New Web Project Page</h1>
 			<div class="row">
 				<div class="col-md-4 play">
-					<label for="ex3">Познай думата</label>
+					<label for="ex3">Познай думата:</label>
+					
+				</div>
 					<div class="word">
-						<input type="text" class="myEN" id="word"/p>
+						<input type="text" class="myEN" id="word">
 						 </div>
-					<input class="form-control" id="wordText" type="text">
-					<button type="button" class="btn btn-primary" onclick="start()">
-						Start
-					</button>
-					<button id="clear_btn" type="button" class="btn btn-primary" onclick="clear()">Clear fild</button>
-					<span id="otgovor" class="btn"> </span>
+						 <p>Тук въведи отговора:<input class="form-control" id="wordText" type="text"></p>
+					<hr>
 					<button id="1" class="form-control" onclick="check()">
-						Check
+						Провери
 					</button>
-					<h2 class="choise">Word choise</h2>
+					<button type="button" class="btn btn-primary" onclick="start()">
+						Начало
+					</button>
+					<button id="clear_btn" type="button" class="btn btn-primary" onclick="clear()">Изчисти</button>
+					<label for="ex3" class="result">Вашият резултат е:</label>
+					<span id="otgovor" class="btn"> </span>					
 					<ul class="pager">
 						<li>
-							<a href="#">Previous</a>
+							<a href="#">Прадишна дума</a>
 						</li>
 						<li>
-							<a href="#" onclick="next()">Next</a>
+							<a href="#" onclick="next()">Следваща дума</a>
 						</li>
 					</ul>
-					<label for="ex3">Вашият резултат е:</label>
-				</div>
-				<div class="col-md-4 levels">
-					<div class="container">
-						<h2>Beginers</h2>
-						<div class="btn-group-vertical">
-							
-								<input id="list1" type="button" value="WordList1" class="btn btn-primary"/>
+					<div class="col-md-4 levels">
+					<h2>Избери ниво: Beginers:<input id="list1" type="button" value="WordList1" class="btn btn-primary"/></h2>					
+						<div class="btn-group-vertical">					
+					<div class="container">					
 							<div id="print"></div>
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 		<div class="english-pre-footer"><img src="english-header.jpg" alt="View" />
