@@ -22,7 +22,7 @@ header {
 
 .word {
     width: 300px;
-	height: 140px;
+	height: 100px;
 	background-color: #c5dfc5;
 	text-align: center;
 	font-family: Arial, Helvetica, sans-serif;
@@ -30,8 +30,8 @@ header {
 }
 
 .myEN {
-	width: 260px;
-	height: 90px;
+	width: 300px;
+	height: 100px;
 	background-color: #c5dfc5;
 	text-align: center;
 	font-family: Arial, Helvetica, sans-serif;
